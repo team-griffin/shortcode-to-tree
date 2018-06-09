@@ -5,11 +5,11 @@ export default {
     input: 'src/index.js',
     output: [
     {
-      file: 'dist/es/bbcode-to-ast.development.js',
+      file: 'dist/es/shortcode-to-tree.development.js',
       format: 'es',
     },
     {
-      file: 'dist/cjs/bbcode-to-ast.development.js',
+      file: 'dist/cjs/shortcode-to-tree.development.js',
       format: 'cjs',
     },
   ],

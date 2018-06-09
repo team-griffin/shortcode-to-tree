@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { parser, createAttributeTag } from '../dist/es/bbcode-to-ast';
+import { parser, createAttributeTag } from '../dist/es/shortcode-to-tree';
 
 describe('dist', function() {
   describe('#parser', function() {

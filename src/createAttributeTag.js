@@ -1,4 +1,3 @@
-import BBTag from 'bbcode-parser/bbTag';
 import * as r from 'ramda';
 
 function formatAttributes(attributes) {
@@ -15,11 +14,9 @@ function formatAttributes(attributes) {
   )(attributes);
 }
 
-function createAttributeTag(tagType) {
-  return BBTag.createTag(tagType, function(tag, content, attr) {
-    const element = `<${tagType} ${formatAttributes(attr)}>${content}</${tagType}>`;
+export default function createAttributeTag(nodeType) {
+  return function(opts, content) {
+    const element = `<${nodeType} ${formatAttributes(opts)}>${content}</${nodeType}>`;
     return element;
-  });
+  }
 }
-
-export default createAttributeTag;

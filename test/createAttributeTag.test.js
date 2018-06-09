@@ -4,8 +4,8 @@ import createAttributeTag from '../src/createAttributeTag';
 
 describe('createAttributeTag', function() {
   beforeEach(function() {
-    const bbcode = '[custom id="foo" bar="baz" qux="true"]Hello World![/custom]';
-    const result = parser(bbcode, {
+    const shortcode = '[custom id="foo" bar="baz" qux="true"]Hello World![/custom]';
+    const result = parser(shortcode, {
       custom: createAttributeTag('custom'),
     });
     this.element = result.elements[0];

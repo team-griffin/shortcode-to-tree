@@ -5,11 +5,11 @@ export default {
     input: 'entry.js',
     output: [
     {
-      file: 'dist/es/bbcode-to-ast.js',
+      file: 'dist/es/shortcode-to-tree.js',
       format: 'es',
     },
     {
-      file: 'dist/cjs/bbcode-to-ast.js',
+      file: 'dist/cjs/shortcode-to-tree.js',
       format: 'cjs',
     },
   ],
@@ -19,9 +19,9 @@ export default {
       contents: `
 // @flow
 if (process.env.NODE_ENV === 'production') {
-module.exports = require('./bbcode-to-ast.production.js');
+module.exports = require('./shortcode-to-tree.production.js');
 } else {
-module.exports = require('./bbcode-to-ast.development.js');
+module.exports = require('./shortcode-to-tree.development.js');
 }`,
     }),
     babel({

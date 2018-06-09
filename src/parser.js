@@ -1,14 +1,13 @@
-import BBCodeParser from 'bbcode-parser';
-import BBTag from 'bbcode-parser/bbTag';
 import convert from 'xml-js';
 import * as r from'ramda';
+import ShortcodeParser from 'meta-shortcodes';
+import createSimpleTag from './createSimpleTag';
 
-const bbTags = r.merge(
-  {
-    root: BBTag.createSimpleTag('root')
-  },
-  BBCodeParser.defaultTags()
-);
+const defaultTags = {
+  root: createSimpleTag('root'),
+  b: createSimpleTag('b'),
+  i: createSimpleTag('i'),
+}
 
 function hasRootTag(str) {
   return r.startsWith('[root]', str);
@@ -26,14 +25,20 @@ function ensureRootTag(str) {
 }
 
 function parser(str, customTags) {
-  const bbParser = new BBCodeParser(r.merge(
-    bbTags,
-    customTags,
-  ));
-  
-  const html = bbParser.parseString(ensureRootTag(str));
+  const shortCodeParser = ShortcodeParser();
 
-  const json = convert.xml2js(html, {
+  const tags = r.merge(
+    defaultTags,
+    customTags,
+  );
+
+  r.forEachObjIndexed((value, key) => {
+    shortCodeParser.add(key, value);
+  })(tags);
+  
+  const xml = shortCodeParser.parse(ensureRootTag(str));
+
+  const json = convert.xml2js(xml, {
     compact: false,
     spaces: 2,
   });

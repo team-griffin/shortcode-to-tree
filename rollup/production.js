@@ -7,11 +7,11 @@ export default {
   input: 'src/index.js',
   output: [
     {
-      file: 'dist/es/bbcode-to-ast.production.js',
+      file: 'dist/es/shortcode-to-tree.production.js',
       format: 'es',
     },
     {
-      file: 'dist/cjs/bbcode-to-ast.production.js',
+      file: 'dist/cjs/shortcode-to-tree.production.js',
       format: 'cjs',
     },
   ],
