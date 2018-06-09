@@ -1,0 +1,63 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        "ramda"
+      ],
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "safari >= 7"
+              ]
+            },
+            "modules": false,
+            "useBuiltIns": false
+          }
+        ]
+      ]
+    },
+
+    "production": {
+      "plugins": [
+        "ramda"
+      ],
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": [
+                "last 2 versions",
+                "safari >= 7"
+              ]
+            },
+            "modules": false,
+            "useBuiltIns": false
+          }
+        ]
+      ]
+    },
+
+    "test": {
+      "plugins": [
+        "istanbul"
+      ],
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            },
+            "modules": "commonjs",
+            "useBuiltIns": false
+          }
+        ]
+      ]
+    }
+  }
+}
