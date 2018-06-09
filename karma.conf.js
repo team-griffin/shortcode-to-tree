@@ -19,7 +19,7 @@ module.exports = function(config) {
     },
 
     webpack: {
-      mode: 'development',
+      mode: 'production',
     },
 
     polyfill: [],
