@@ -90,7 +90,6 @@ console.log(JSON.stringify(tree, null, 2));
     }
   ]
 }
-
 */
 ```
 
@@ -98,6 +97,95 @@ Above you will now notice that the attributes for that shortcode have been suppl
 
 ### createSimpleTag
 
+This shortcode handler is for tags which do not support attributes, such as `[b]` or `[i]`.
+
+```js
+import { parser, createSimpleTag } from 'shortcode-to-tree';
+
+const tags = {
+  foo: createSimpleTag('foo'),
+};
+
+const input = 'Hello [foo bar="baz"]World![/foo]';
+
+const tree = parser(input, {
+  foo: createAttributeTag('foo'),
+});
+
+console.log(JSON.stringify(tree, null, 2));
+
+/*
+{
+  "type": "element",
+  "name": "root",
+  "elements": [
+    {
+      "type": "text",
+      "text": "Hello "
+    },
+    {
+      "type": "element",
+      "name": "foo",
+      "elements": [
+        {
+          "type": "text",
+          "text": "World!"
+        }
+      ]
+    }
+  ]
+}
+*/
+```
+
 ### createAttributeTag
 
+As shown above this is for shortcodes which require attribute support. All attributes are treated as strings.
+
+```js
+import { parser, createAttributeTag } from 'shortcode-to-tree';
+
+const tags = {
+  foo: createAttributeTag('foo'),
+};
+
+const input = 'Hello [foo bar="baz"]World![/foo]';
+
+const tree = parser(input, {
+  foo: createAttributeTag('foo'),
+});
+
+
+console.log(JSON.stringify(tree, null, 2));
+
+/*
+{
+  "type": "element",
+  "name": "root",
+  "elements": [
+    {
+      "type": "text",
+      "text": "Hello "
+    },
+    {
+      "type": "element",
+      "name": "foo",
+      "attributes": {
+        "bar": "baz"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "text": "World!"
+        }
+      ]
+    }
+  ]
+}
+*/
+```
+
 ## Default tags
+
+* `[b]content[/b]`
+* `[i]content[/i]`
