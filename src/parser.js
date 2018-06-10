@@ -5,8 +5,6 @@ import createSimpleTag from './createSimpleTag';
 
 const defaultTags = {
   root: createSimpleTag('root'),
-  b: createSimpleTag('b'),
-  i: createSimpleTag('i'),
 }
 
 function hasRootTag(str) {

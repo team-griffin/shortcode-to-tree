@@ -15,14 +15,15 @@ yarn add shortcode-to-tree
 
 ### parser
 This function is the main powerhouse of this library. You just need to call it with the text that you'd like converted.
-It comes pre-loaded with several default shortcodes.
 
 ```js
-import { parser } from 'shortcode-to-tree';
+import { parser, createSimpleTag } from 'shortcode-to-tree';
 
 const input = 'Hello [b]World![/b]';
 
-const tree = parser(input);
+const tree = parser(input, {
+  b: createSimpleTag('b'),
+});
 
 console.log(JSON.stringify(tree, null, 2));
 
@@ -187,5 +188,30 @@ console.log(JSON.stringify(tree, null, 2));
 
 ## Default tags
 
-* `[b]content[/b]`
-* `[i]content[/i]`
+This package exposes several pre-configured tags. These can be imported and used like so:
+
+```js
+import { defaultTags, parser } from 'shortcode-to-tree';
+
+const tree = parser(input, defaultTags);
+
+```
+
+If you want to add more tags on top of this you can just merge the default tags into your custom tags:
+
+```js
+import { defaultTags, createSimpleTag, parser } from 'shortcode-to-tree';
+
+const tags = {
+  ...defaultTags,
+  foo: createSimpleTag('foo'),
+}
+
+const tree = parser(input, tags);
+
+```
+
+The default tags are:
+
+* `b` (simple tag)
+* `i` (simple tag)

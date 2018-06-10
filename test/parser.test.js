@@ -35,13 +35,6 @@ describe('parser', function() {
     });   
   });
 
-  it('pre-loaded with standard tags', function() {
-    const shortcode = '[b]Hello world![/b]';
-    const result = parser(shortcode);
-
-    expect(result.elements[0].name).equals('b');   
-  });
-
   it('supports custom tags', function() {
     const shortcode = '[foo]Hello world![/foo]';
     const result = parser(shortcode, {
@@ -50,5 +43,16 @@ describe('parser', function() {
 
     expect(result.elements[0].type).equals('element');
     expect(result.elements[0].name).equals('foo');   
+  });
+
+  it('supports self-closing', function() {
+    const shortcode = 'Hello [foo id="1"/] World!';
+    const result = parser(shortcode, {
+      foo: createAttributeTag('foo'),
+    });
+
+    expect(result.elements[0].type).equals('text');
+    expect(result.elements[1].name).equals('foo');
+    expect(result.elements[2].type).equals('text');
   });
 });
