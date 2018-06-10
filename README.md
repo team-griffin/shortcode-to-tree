@@ -1,5 +1,7 @@
 # shortcode-to-tree
 
+[![npm version](https://badge.fury.io/js/shortcode-to-tree.svg)](https://badge.fury.io/js/shortcode-to-tree)
+
 Shortcodes are a nice compromise for human editors between the simplicity of markup languages like markdown 
 and the complexities of html.
 
