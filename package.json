@@ -6,6 +6,17 @@
   "repository": "git@github.com:team-griffin/shortcode-to-tree.git",
   "author": "Joshua Thornton <joshua.thornton@godaddy.com>",
   "license": "MIT",
+  "description": "Parse shortcode text into a tree structure",
+  "keywords": [
+    "shortcode",
+    "parse",
+    "tree"
+  ],
+  "homepage": "https://github.com/team-griffin/shortcode-to-tree",
+  "bugs": {
+    "email": "joshua.thornton@godaddy.com",
+    "url": "https://github.com/team-griffin/shortcode-to-tree/issues"
+  },
   "scripts": {
     "clean:dist": "rimraf ./dist",
     "test": "cross-env NODE_ENV=test nyc mocha",
