@@ -1,6 +1,6 @@
 {
   "name": "shortcode-to-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/cjs/shortcode-to-tree.js",
   "module": "dist/es/shortcode-to-tree.js",
   "repository": "git@github.com:team-griffin/shortcode-to-tree.git",
@@ -20,7 +20,7 @@
   "scripts": {
     "clean:dist": "rimraf ./dist",
     "test": "cross-env NODE_ENV=test nyc mocha",
-    "test:integration": "karma start",
+    "test:integration": "yarn build && karma start",
     "prepublishOnly": "yarn build",
     "build:dev": "cross-env NODE_ENV=development rollup --config ./rollup/development.js",
     "build:prod": "cross-env NODE_ENV=production rollup --config ./rollup/production.js",

@@ -33,12 +33,13 @@ function parser(str, customTags) {
   r.forEachObjIndexed((value, key) => {
     shortCodeParser.add(key, value);
   })(tags);
-  
+
   const xml = shortCodeParser.parse(ensureRootTag(str));
 
   const json = convert.xml2js(xml, {
     compact: false,
     spaces: 2,
+    captureSpacesBetweenElements: true,
   });
 
   return json.elements[0];

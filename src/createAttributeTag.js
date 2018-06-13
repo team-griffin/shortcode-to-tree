@@ -3,12 +3,9 @@ import * as r from 'ramda';
 function formatAttributes(attributes) {
   return r.pipe(
     r.toPairs,
-    r.map(r.pipe(
-      (attr) => [
-        attr[0],
-        `"${attr[1]}"`,
-      ],
-      r.join('='),
+    r.map(r.converge(
+      r.unapply(r.join('=')),
+      [ r.nth(0), ([, x]) => `"${x}"` ],
     )),
     r.join(' '),
   )(attributes);
