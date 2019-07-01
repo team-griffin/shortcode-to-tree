@@ -5,11 +5,11 @@ export default {
     input: 'src/index.js',
     output: [
     {
-      file: 'dist/es/shortcode-to-tree.development.js',
+      file: 'dist/es/shortcode-to-tree.js',
       format: 'es',
     },
     {
-      file: 'dist/cjs/shortcode-to-tree.development.js',
+      file: 'dist/cjs/shortcode-to-tree.js',
       format: 'cjs',
     },
   ],
@@ -19,5 +19,10 @@ export default {
       exclude: 'node_modules/**',
       plugins: ['external-helpers'],
     }),
+  ],
+  external: [
+    'ramda',
+    'xml-js',
+    'meta-shortcodes',
   ],
 };

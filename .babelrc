@@ -1,9 +1,6 @@
 {
   "env": {
     "development": {
-      "plugins": [
-        "ramda"
-      ],
       "presets": [
         [
           "env",
@@ -22,9 +19,6 @@
     },
 
     "production": {
-      "plugins": [
-        "ramda"
-      ],
       "presets": [
         [
           "env",
